@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: hello-spring-cloud-eureka
+
+#server:
+#  port: 8761
+#
+##这是单个注册中心的demo
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+#这是集群的demo 打包的时候需要踢出自己 意思就是不向注册中心注册自己
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://127.0.0.1:10001/eureka/,http://127.0.0.1:10002/eureka/
+server:
+  port: 10003

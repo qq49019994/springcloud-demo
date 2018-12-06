@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: hello-spring-cloud-zuul
+#很显然 实际生产环境不可能网站带着端口去访问，但一台服务器又不能端口冲突，所以我们这里引入网关
+server:
+  port: 80
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:10001/eureka/,http://127.0.0.1:10002/eureka/,http://127.0.0.1:10003/eureka/
+
+#routes下面的名字爱起啥起啥 支持多个节点 但是节点名字不能冲突
+#实际效果 http://127.0.0.1/web/admin/hi?message=gexincloud
+#现在我们演示一下hello-spring-cloud-server-admin这个服务器挂掉的情况
+zuul:
+  routes:
+    web-admin:
+      path: /web/admin/**
+      serviceId: hello-spring-cloud-web-admin-feign
+    server-admin:
+      path: /api/admin/**
+      serviceId: hello-spring-cloud-server-admin

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: hello-spring-cloud-service-admin
+
+server:
+  port: 7762
+
+eureka:
+  client:
+    serviceUrl:
+      #由于我们使用了集群 所以这里要改一下
+      defaultZone:  http://127.0.0.1:10001/eureka/,http://127.0.0.1:10002/eureka/,http://127.0.0.1:10003/eureka/
