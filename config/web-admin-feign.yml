@@ -1,12 +1,21 @@
 spring:
   application:
-    name: hello-spring-cloud-service-admin
+    name: hello-spring-cloud-web-admin-feign
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
 
 server:
-  port: 7762
+  port: 12765
 
 eureka:
   client:
     serviceUrl:
-      #由于我们使用了集群 所以这里要改一下
-      defaultZone:  http://127.0.0.1:10001/eureka/,http://127.0.0.1:10002/eureka/,http://127.0.0.1:10003/eureka/
+      defaultZone: http://127.0.0.1:10001/eureka/,http://127.0.0.1:10002/eureka/,http://127.0.0.1:10003/eureka/
+
+feign:
+  hystrix:
+    enabled: true
