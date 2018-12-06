@@ -7,6 +7,7 @@ spring:
       server:
         git:
           uri: https://github.com/qq49019994/springcloud-demo
+          search-paths: config
           username:
           password:
 
